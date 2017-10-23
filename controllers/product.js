@@ -3,7 +3,7 @@
 const Product = require('../modelos/product')
 
 function getProducts(req, res) {
-    Product.find({}, (err,products) =>{
+    Product.find({}, {__v:0}, (err,products) =>{
     if(err) return res.status(500).send({mensaje : 'error al buscar el producto'})
     if(!products) return res.status(404).send({mensaje: 'el producto no existe'})
     res.send(200, ({products}))
@@ -12,7 +12,7 @@ function getProducts(req, res) {
 
 function getProduct(req, res) {
     let productId = req.params.productId 
-    Product.findById(productId, (err, products) => {
+    Product.findById(productId, {__v:0},(err, products) => {
         if(err) return res.status(500).send({mensaje : 'error al buscar el producto'})
         if(!products) return res.status(404).send({mensaje: 'el producto no existe'})
         // si el producto existe

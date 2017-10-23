@@ -15,5 +15,4 @@ const ProductSchema = Schema({
 })
 
 // para exportar usamos metodo model de moongoose (nombre que quiera, nombre de esquema)
-
 module.exports = mongoose.model('Product' , ProductSchema)
